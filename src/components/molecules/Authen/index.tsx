@@ -2,6 +2,9 @@ import React, { useState, useCallback } from "react";
 import Icon from "@/components/atoms/Icon";
 import Button from "@/components/atoms/Button";
 import Modal from "@/components/atoms/Modal";
+import Title from "@/components/atoms/Title";
+import LoginForm from "./LoginForm";
+import SignUpForm from "./SignUpForm";
 
 type Props = {};
 
@@ -25,11 +28,20 @@ const Authen: React.FC<Props> = ({}) => {
 
   const _renderAuthenModal = useCallback(() => {
     return (
-      <Modal open={isVisible} onClose={onToogleModal}>
-        <div>login</div>
+      <Modal
+        open={isVisible}
+        onClose={onToogleModal}
+        className="py-[56px] px-[180px] flex flex-col items-center"
+      >
+        <Title>{!isRegister ? "Sign in to Rvideos" : "Sign up"}</Title>
+        {!isRegister ? (
+          <LoginForm onChangeForm={() => setIsRegister(true)} />
+        ) : (
+          <SignUpForm onChangeForm={() => setIsRegister(false)} />
+        )}
       </Modal>
     );
-  }, [isVisible, onToogleModal]);
+  }, [isRegister, isVisible, onToogleModal]);
 
   return (
     <React.Fragment>

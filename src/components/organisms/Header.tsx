@@ -1,49 +1,50 @@
-import React, { ReactNode, useCallback } from "react";
+import React, { useCallback } from "react";
 import Image from "next/image";
-import Icon from "@/components/atoms/Icon";
-import Button from "@/components/atoms/Button";
 import Authen from "@/components/molecules/Authen";
+import Profile from "@/components/molecules/Profile";
 import LogoImg from "@/assets/logo.webp";
 import LogoIcon from "@/assets/logo-icon.webp";
+import { useAuth } from "@/hooks/useAuth";
 
 type Props = {};
 
 const Header: React.FC<Props> = ({}) => {
+  const { user, authLoaded } = useAuth(true);
+
   const _renderLeftSegment = useCallback(() => {
     return (
-      <div className="flex items-center">
-        <div className="ml-[20px] mr-[30px] lg:hidden">
+      <React.Fragment>
+        <div className="md:hidden">
           <Image
             src={LogoIcon}
-            width={50}
-            height={50}
-            className="cursor-pointer"
+            width={30}
+            height={30}
+            className="cursor-pointer ml-[20px] mr-[30px]"
             alt="Rvideos"
           />
         </div>
-        <div className="ml-[20px] mr-[30px] lg:block hidden">
+        <div className="md:block hidden">
           <Image
             src={LogoImg}
-            width={150}
-            height={50}
-            className="cursor-pointer"
+            width={90}
+            height={30}
+            className="cursor-pointer ml-[20px] mr-[30px]"
             alt="Rvideos"
           />
         </div>
-      </div>
+      </React.Fragment>
     );
   }, []);
 
   const _renderRightSegment = useCallback(() => {
-    return (
-      <div>
-        <Authen />
-      </div>
-    );
-  }, []);
+    if (!authLoaded) {
+      return <></>;
+    }
+    return <div>{!user ? <Authen /> : <Profile />}</div>;
+  }, [user, authLoaded]);
 
   return (
-    <div className="sticky top-0 backdrop-blur-xl bg-white w-full md:h-[74px] h-[62px] z-10 pt-[5px] md:pt-[10px] pr-[30px] flex flex-row justify-between items-center pl-[30px]">
+    <div className="sticky top-0 backdrop-blur-xl bg-white w-full md:h-[74px] h-[62px] z-10 pt-[5px] md:px-[20px] px-[10px] flex flex-row justify-between items-center">
       {_renderLeftSegment()}
       {_renderRightSegment()}
     </div>
