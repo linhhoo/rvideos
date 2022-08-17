@@ -138,6 +138,7 @@ const SignUpForm = ({ onChangeForm }: Props) => {
       )}
 
       <Button
+        name="register_login-button"
         className="w-full h-[50px] mt-[20px]"
         onClick={() => onChangeForm()}
       >

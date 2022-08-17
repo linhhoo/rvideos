@@ -16,8 +16,8 @@ const Home: NextPage = () => {
       <main>
         <Header />
         <h1 className="text-3xl font-bold text-red">
-          Hello world! {process.env.NEXT_PUBLIC_BASE_PATH}{" "}
-          {process.env.NEXT_PUBLIC_LOCAL_EXAMPLE}
+          Hello world! {process.env.NEXT_PUBLIC_USER_NAME_PREFIX}{" "}
+          {process.env.NEXT_PUBLIC_USER_NAME_PREFIX}
         </h1>
         <Button>hello</Button>
         <Icon name="user" />

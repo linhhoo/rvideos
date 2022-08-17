@@ -100,12 +100,16 @@ const LoginForm = ({ onChangeForm }: Props) => {
           />
         </Button>
       ) : (
-        <Button className="bg-primary w-full h-[50px] rounded-[8px] text-white mt-[20px]">
+        <Button
+          name="login_submit-button"
+          className="bg-primary w-full h-[50px] rounded-[8px] text-white mt-[20px]"
+        >
           Sign in
         </Button>
       )}
 
       <Button
+        name="login_register-button"
         className="w-full h-[50px] mt-[20px]"
         onClick={() => onChangeForm()}
       >

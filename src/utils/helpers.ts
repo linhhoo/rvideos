@@ -3,7 +3,7 @@ export const classNames = (...classes: any) => {
 };
 
 export const genEmailByName = (userName: string) => {
-  return userName + process.env.NEXT_PUBLIC_USER_NAME_PREFIX;
+  return userName + `${process.env.NEXT_PUBLIC_USER_NAME_PREFIX}`;
 };
 
 export const getNameByEmail = (email: string) => {

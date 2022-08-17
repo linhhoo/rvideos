@@ -33,7 +33,9 @@ const Authen: React.FC<Props> = ({}) => {
         onClose={onToogleModal}
         className="py-[56px] px-[180px] flex flex-col items-center"
       >
-        <Title>{!isRegister ? "Sign in to Rvideos" : "Sign up"}</Title>
+        <Title>
+          {!isRegister ? "Sign in to Rvideos" : "Create your account"}
+        </Title>
         {!isRegister ? (
           <LoginForm onChangeForm={() => setIsRegister(true)} />
         ) : (
@@ -45,10 +47,18 @@ const Authen: React.FC<Props> = ({}) => {
 
   return (
     <React.Fragment>
-      <Button className="bg-gray mr-[10px]" onClick={onShowRegisterModal}>
+      <Button
+        name="register-button"
+        className="bg-gray mr-[10px]"
+        onClick={onShowRegisterModal}
+      >
         Register
       </Button>
-      <Button className="bg-primary text-white" onClick={onShowLoginModal}>
+      <Button
+        name="login-button"
+        className="bg-primary text-white"
+        onClick={onShowLoginModal}
+      >
         Login
       </Button>
       {_renderAuthenModal()}

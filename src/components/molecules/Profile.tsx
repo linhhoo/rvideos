@@ -11,7 +11,6 @@ type Props = {};
 const Profile: React.FC<Props> = ({}) => {
   const { user, onLogout, isLogoutLoading } = useAuth();
   const [isVisible, setVisible] = useState(false);
-  const [isRegister, setIsRegister] = useState(false);
 
   const onToogleModal = useCallback(() => {
     setVisible(!isVisible);

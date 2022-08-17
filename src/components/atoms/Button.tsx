@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { classNames } from "@/utils/helpers";
 
 type Props = {
+  name?: string;
   children: ReactNode;
   color?: string;
   className?: string;
