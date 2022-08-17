@@ -9,7 +9,7 @@ import { getNameByEmail } from "@/utils/helpers";
 type Props = {};
 
 const Profile: React.FC<Props> = ({}) => {
-  const { user, onLogout } = useAuth();
+  const { user, onLogout, isLogoutLoading } = useAuth();
   const [isVisible, setVisible] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
 
@@ -38,7 +38,14 @@ const Profile: React.FC<Props> = ({}) => {
         Share new video
       </Button>
       <Button className="bg-primary text-white" onClick={onLogout}>
-        Logout
+        {isLogoutLoading ? (
+          <div
+            style={{ borderTopColor: "transparent" }}
+            className="w-6 h-6 border-2  border-solid rounded-full animate-spin"
+          />
+        ) : (
+          "Logout"
+        )}
       </Button>
       {_renderShareVideoModal()}
     </div>

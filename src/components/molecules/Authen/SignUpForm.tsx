@@ -125,7 +125,7 @@ const SignUpForm = ({ onChangeForm }: Props) => {
       {renderInputErrorMessage(errors?.passwordConfirmation?.message || "")}
 
       {isSignUpLoading ? (
-        <Button className="bg-main-primary w-full h-[50px] rounded-[8px] flex text-white justify-center items-center">
+        <Button className="bg-primary w-full h-[50px] rounded-[8px] flex text-white justify-center items-center">
           <div
             style={{ borderTopColor: "transparent" }}
             className="w-6 h-6 border-2  border-solid rounded-full animate-spin"

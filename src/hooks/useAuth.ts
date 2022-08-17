@@ -12,6 +12,7 @@ export const useAuth = (isCheckUser: boolean = false) => {
   const [loginError, setLoginError] = useState<any>(null);
   const [isSignUpLoading, setSignUpLoading] = useState(false);
   const [signUpError, setSignUpError] = useState<any>(null);
+  const [isLogoutLoading, setLogoutLoading] = useState(false);
 
   const onLogin = useCallback(
     async (userName: string, password: string) => {
@@ -52,10 +53,12 @@ export const useAuth = (isCheckUser: boolean = false) => {
   );
 
   const onLogout = useCallback(async () => {
+    setLogoutLoading(true);
     const { error } = await supabase.auth.signOut();
     if (!error) {
       setUser(null);
     }
+    setLogoutLoading(false);
   }, [setUser]);
 
   const _onCheckUser = useCallback(async () => {
@@ -78,6 +81,7 @@ export const useAuth = (isCheckUser: boolean = false) => {
     loginError,
     isSignUpLoading,
     signUpError,
+    isLogoutLoading,
     onLogin,
     onSignUp,
     onLogout,
