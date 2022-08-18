@@ -21,7 +21,7 @@ const Videos: React.FC<Props> = ({}) => {
     setIsShowVideoDetail(true);
   }, []);
 
-  const onCloseVideoDetail = useCallback((data: VideoModel) => {
+  const onCloseVideoDetail = useCallback(() => {
     setIsShowVideoDetail(false);
     setSelectedVideo(null);
   }, []);
