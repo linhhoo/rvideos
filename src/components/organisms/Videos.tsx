@@ -27,9 +27,9 @@ const Videos: React.FC<Props> = ({}) => {
         </React.Fragment>
       ))}
       {!!isShowLoadMore && (
-        <div className="flex items-center">
+        <div className="mb-[90px]">
           <Button
-            className="w-[100px] h-[100px] bg-secondary rounded-[50%]"
+            className="w-[100px] h-[100px] bg-secondary rounded-[50%] block m-auto"
             onClick={onGetVideo}
           >
             Load more
@@ -37,10 +37,12 @@ const Videos: React.FC<Props> = ({}) => {
         </div>
       )}
       {!!isLoading && (
-        <div
-          style={{ borderTopColor: "transparent" }}
-          className="w-6 h-6 border-2  border-solid rounded-full animate-spin"
-        />
+        <div className="mb-[90px]">
+          <div
+            style={{ borderTopColor: "transparent" }}
+            className="w-6 h-6 border-2  border-solid rounded-full animate-spin m-auto "
+          />
+        </div>
       )}
     </div>
   );

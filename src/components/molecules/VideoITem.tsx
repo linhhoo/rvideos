@@ -10,16 +10,22 @@ type Props = {
 
 const VideoItem: React.FC<Props> = ({ data }) => {
   return (
-    <div className="flex flex-row justify-between items-start mb-[20px]">
+    <div className="flex flex-col md:flex-row justify-between items-start mb-[50px]">
       <Thumb
         src={data.thumb}
         blurImage={data.blur_thumb}
-        className="w-[40vw] h-[30vw] max-w-[400px] max-h-[300px]"
+        className="w-[100%] md:w-[40vw]  md:max-w-[400px]"
       />
-      <div className="flex flex-1 flex-col pl-[30px] items-top">
-        <Title type="h1">{data.title}</Title>
-        <Title type="h3">{`Share by ${data.user_name}`}</Title>
-        <Text className="line-clamp-4">{data.description}</Text>
+      <div className="flex flex-1 flex-col md:pl-[30px] pt-[30px] md:pt-0 items-top oveflow-hidden w-[100%]">
+        <Title className="text-bold" onClick={() => {}} type="h1">
+          {data.title}
+        </Title>
+        <Title
+          className="mb-[10px]"
+          type="h3"
+        >{`Share by: ${data.user_name}`}</Title>
+        <Text>Description:</Text>
+        <Text className="line-clamp-5">{data.description}</Text>
       </div>
     </div>
   );

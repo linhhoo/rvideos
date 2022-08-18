@@ -17,7 +17,8 @@ module.exports = {
       transparent: "transparent",
       errorbg: "#FFEFEF",
       successbg: "#EFFFF4",
+      copyright: "#CCCCCC",
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };

@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Header from "@/components/organisms/Header";
 import Videos from "@/components/organisms/Videos";
+import Footer from "@/components/molecules/Footer";
 
 const Home: NextPage = () => {
   return (
@@ -17,7 +18,9 @@ const Home: NextPage = () => {
         <Videos />
       </main>
 
-      <footer></footer>
+      <footer>
+        <Footer />
+      </footer>
     </React.Fragment>
   );
 };
