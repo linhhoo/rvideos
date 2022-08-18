@@ -3,6 +3,7 @@ import Icon from "@/components/atoms/Icon";
 import Button from "@/components/atoms/Button";
 import Modal from "@/components/atoms/Modal";
 import Title from "@/components/atoms/Title";
+import ShareVideoForm from "./ShareVideoForm";
 import { useAuth } from "@/hooks/useAuth";
 import { getNameByEmail } from "@/utils/helpers";
 
@@ -16,37 +17,28 @@ const Profile: React.FC<Props> = ({}) => {
     setVisible(!isVisible);
   }, [isVisible, setVisible]);
 
-  const _renderShareVideoModal = useCallback(() => {
-    return (
-      <Modal
-        open={isVisible}
-        onClose={onToogleModal}
-        className="py-[56px] px-[180px] flex flex-col items-center"
-      >
-        <Title>ShareVideo</Title>
-      </Modal>
-    );
-  }, [isVisible, onToogleModal]);
-
   return (
     <div className="flex flex-row justify-between items-center">
       <Title type="h3" className="md:block hidden mr-[10px]">{`Welcome ${
         user?.email && getNameByEmail(user.email)
       }`}</Title>
-      <Button className="bg-gray mr-[10px]" onClick={onToogleModal}>
+      <Button
+        className="bg-primary text-white mr-[10px]"
+        onClick={onToogleModal}
+      >
         Share new video
       </Button>
-      <Button className="bg-primary text-white" onClick={onLogout}>
+      <Button className="bg-gray" onClick={onLogout}>
         {isLogoutLoading ? (
           <div
             style={{ borderTopColor: "transparent" }}
             className="w-6 h-6 border-2  border-solid rounded-full animate-spin"
           />
         ) : (
-          "Logout"
+          <Icon name="logout" />
         )}
       </Button>
-      {_renderShareVideoModal()}
+      <ShareVideoForm open={isVisible} onClose={onToogleModal} />
     </div>
   );
 };

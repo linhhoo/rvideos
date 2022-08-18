@@ -3,7 +3,12 @@
 // If you're using ESLint on your project, we recommend installing the ESLint Cypress plugin instead:
 // https://github.com/cypress-io/eslint-plugin-cypress
 
-import { classNames, genEmailByName, getNameByEmail } from "@/utils/helpers";
+import {
+  classNames,
+  genEmailByName,
+  getNameByEmail,
+  youtubeParser,
+} from "@/utils/helpers";
 
 describe("Unit Test Application Code", () => {
   context("utils/helpers.ts", function () {
@@ -23,6 +28,30 @@ describe("Unit Test Application Code", () => {
       expect(
         getNameByEmail(`user1${process.env.NEXT_PUBLIC_USER_NAME_PREFIX}`)
       ).to.eq("user1");
+    });
+
+    it("get the videoID from url", function () {
+      expect(
+        youtubeParser(`https://www.youtube.com/watch?v=48cLsri6WdI`)
+      ).to.eq("48cLsri6WdI");
+
+      expect(
+        youtubeParser(
+          `http://www.youtube.com/watch?v=48cLsri6WdI&feature=feedrec_grec_index`
+        )
+      ).to.eq("48cLsri6WdI");
+
+      expect(youtubeParser(`http://www.youtube.com/v/48cLsri6WdI?t=62`)).to.eq(
+        "48cLsri6WdI"
+      );
+
+      expect(youtubeParser(`https://youtu.be/48cLsri6WdI?t=62`)).to.eq(
+        "48cLsri6WdI"
+      );
+
+      expect(youtubeParser(`http://youtu.be/48cLsri6WdI`)).to.eq("48cLsri6WdI");
+
+      expect(youtubeParser(`example.com`)).to.eq(null);
     });
   });
 });
