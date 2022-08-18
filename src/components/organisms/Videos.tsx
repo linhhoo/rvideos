@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
-import VideoItem from "@/components/molecules/VideoItem";
+import ListVideoItem from "@/components/molecules/ListVideoItem";
 import VideoDetail from "@/components/molecules/VideoDetail";
 import { useVideos } from "@/hooks/useVideos";
 import Button from "../atoms/Button";
@@ -30,7 +30,7 @@ const Videos: React.FC<Props> = ({}) => {
     <div className="pt-[80px] max-w-[1000px] m-auto px-[20px]">
       {videos.map((video, index) => (
         <React.Fragment key={`video-item-$${video.id}-${index}`}>
-          <VideoItem data={video} onClick={onOpenVideoDetail} />
+          <ListVideoItem data={video} onClick={onOpenVideoDetail} />
         </React.Fragment>
       ))}
       {!!isShowLoadMore && (

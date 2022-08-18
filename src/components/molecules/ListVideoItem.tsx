@@ -9,7 +9,7 @@ type Props = {
   onClick: (data: VideoModel) => void;
 };
 
-const VideoItem: React.FC<Props> = ({ data, onClick }) => {
+const ListVideoItem: React.FC<Props> = ({ data, onClick }) => {
   return (
     <div className="flex flex-col md:flex-row justify-between items-start mb-[50px]">
       <Thumb
@@ -33,4 +33,4 @@ const VideoItem: React.FC<Props> = ({ data, onClick }) => {
   );
 };
 
-export default React.memo(VideoItem);
+export default React.memo(ListVideoItem);
