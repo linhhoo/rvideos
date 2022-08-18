@@ -1,29 +1,36 @@
-import React, { useCallback, useMemo } from "react";
-import Image from "next/image";
-import Authen from "@/components/molecules/Authen";
-import Profile from "@/components/molecules/Profile";
-import LogoImg from "@/assets/logo.webp";
-import LogoIcon from "@/assets/logo-icon.webp";
-import { useAuth } from "@/hooks/useAuth";
-import VideoITem from "@/components/molecules/VideoITem";
+import React, { useCallback, useMemo, useState } from "react";
+import VideoDetail from "@/components/molecules/VideoDetail";
+import VideoItem from "@/components/molecules/VideoItem";
 import { useVideos } from "@/hooks/useVideos";
 import Button from "../atoms/Button";
-
+import { VideoModel } from "@/models/videoModel";
 type Props = {};
 
 const Videos: React.FC<Props> = ({}) => {
   const { videos, isEndList, isLoading, onGetVideo } = useVideos();
+  const [isShowVideoDetail, setIsShowVideoDetail] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState<VideoModel | null>(null);
 
   const isShowLoadMore = useMemo(
     () => videos.length && !isLoading && !isEndList,
     [videos, isEndList, isLoading]
   );
 
+  const onOpenVideoDetail = useCallback((data: VideoModel) => {
+    setSelectedVideo(data);
+    setIsShowVideoDetail(true);
+  }, []);
+
+  const onCloseVideoDetail = useCallback((data: VideoModel) => {
+    setIsShowVideoDetail(false);
+    setSelectedVideo(null);
+  }, []);
+
   return (
     <div className="pt-[80px] max-w-[1000px] m-auto px-[20px]">
       {videos.map((video, index) => (
         <React.Fragment key={`video-item-$${video.id}-${index}`}>
-          <VideoITem data={video} />
+          <VideoItem data={video} onClick={onOpenVideoDetail} />
         </React.Fragment>
       ))}
       {!!isShowLoadMore && (
@@ -44,6 +51,11 @@ const Videos: React.FC<Props> = ({}) => {
           />
         </div>
       )}
+      <VideoDetail
+        data={selectedVideo}
+        open={isShowVideoDetail}
+        onClose={onCloseVideoDetail}
+      />
     </div>
   );
 };
