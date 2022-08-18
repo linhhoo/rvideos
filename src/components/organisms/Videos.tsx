@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
-import VideoDetail from "@/components/molecules/VideoDetail";
 import VideoItem from "@/components/molecules/VideoItem";
+import VideoDetail from "@/components/molecules/VideoDetail";
 import { useVideos } from "@/hooks/useVideos";
 import Button from "../atoms/Button";
 import { VideoModel } from "@/models/videoModel";
