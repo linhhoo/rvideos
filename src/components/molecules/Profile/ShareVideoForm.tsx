@@ -74,7 +74,7 @@ const ShareVideoForm = ({ open, onClose }: Props) => {
     <Modal
       open={open}
       onClose={onCloseModal}
-      className="py-[56px] px-[180px] flex flex-col items-center"
+      className="py-[56px] px-[20px] md:px-[180px] flex flex-col items-center"
     >
       <Title>Share Youtube Video</Title>
       <form className="mt-[40px]" onSubmit={handleSubmit(onSubmit)}>
@@ -84,7 +84,7 @@ const ShareVideoForm = ({ open, onClose }: Props) => {
         )}
         <div
           className={
-            "sm:flex items-center h-[38px] md:w-[348px] w-[300px] hidden relative"
+            "flex items-center h-[38px] md:w-[348px] w-[100%] relative"
           }
         >
           <Icon name="user" className="absolute left-[8px]" />

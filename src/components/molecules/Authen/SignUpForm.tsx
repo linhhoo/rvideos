@@ -65,9 +65,7 @@ const SignUpForm = ({ onChangeForm }: Props) => {
         <Alert type="error">{signUpError?.message || ""}</Alert>
       )}
       <div
-        className={
-          "sm:flex items-center h-[38px] md:w-[348px] w-[300px] hidden relative"
-        }
+        className={"flex items-center h-[38px] md:w-[348px] w-[100%] relative"}
       >
         <Icon name="user" className="absolute left-[8px]" />
         <input
@@ -82,7 +80,7 @@ const SignUpForm = ({ onChangeForm }: Props) => {
 
       <div
         className={
-          "sm:flex items-center h-[38px] md:w-[348px] w-[300px] hidden relative  mt-[10px]"
+          "flex items-center h-[38px] md:w-[348px] w-[100%] relative  mt-[10px]"
         }
       >
         <Icon name="lock" className="absolute left-[8px]" />
@@ -104,7 +102,7 @@ const SignUpForm = ({ onChangeForm }: Props) => {
 
       <div
         className={
-          "sm:flex items-center h-[38px] md:w-[348px] w-[300px] hidden relative  mt-[10px]"
+          "flex items-center h-[38px] md:w-[348px] w-[100%] relative  mt-[10px]"
         }
       >
         <Icon name="lock" className="absolute left-[8px]" />

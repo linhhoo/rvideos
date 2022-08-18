@@ -27,7 +27,7 @@ const Videos: React.FC<Props> = ({}) => {
   }, []);
 
   return (
-    <div className="pt-[80px] max-w-[1000px] m-auto px-[20px]">
+    <div className="pt-[80px] max-w-[1000px] m-auto px-[20px] min-h-[80vh]">
       {videos.map((video, index) => (
         <React.Fragment key={`video-item-$${video.id}-${index}`}>
           <ListVideoItem data={video} onClick={onOpenVideoDetail} />
@@ -47,7 +47,7 @@ const Videos: React.FC<Props> = ({}) => {
         <div className="mb-[90px]">
           <div
             style={{ borderTopColor: "transparent" }}
-            className="w-6 h-6 border-2  border-solid rounded-full animate-spin m-auto "
+            className="w-6 h-6 border-2  border-solid rounded-full animate-spin m-auto text-primary"
           />
         </div>
       )}

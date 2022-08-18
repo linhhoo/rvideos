@@ -17,7 +17,7 @@ const VideoDetail = ({ open, onClose, data }: Props) => {
     <Modal
       open={open}
       onClose={onClose}
-      className="py-[56px] px-[20px] flex flex-col items-start"
+      className="py-[56px] px-[20px] flex flex-col items-start overflow-hidden"
     >
       <div className="mb-[20px] w-[100%]">
         <iframe
@@ -34,7 +34,9 @@ const VideoDetail = ({ open, onClose, data }: Props) => {
         type="h3"
       >{`Share by: ${data?.user_name}`}</Title>
       <Text>Description:</Text>
-      <Text>{data?.description}</Text>
+      <Text className="w-[100%] text-ellipsis overflow-hidden">
+        {data?.description}
+      </Text>
     </Modal>
   );
 };

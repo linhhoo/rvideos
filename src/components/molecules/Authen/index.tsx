@@ -31,7 +31,7 @@ const Authen: React.FC<Props> = ({}) => {
       <Modal
         open={isVisible}
         onClose={onToogleModal}
-        className="py-[56px] px-[180px] flex flex-col items-center"
+        className="py-[56px] px-[20px] md:px-[180px] flex flex-col items-center"
       >
         <Title>
           {!isRegister ? "Sign in to Rvideos" : "Create your account"}

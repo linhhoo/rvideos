@@ -55,9 +55,7 @@ const LoginForm = ({ onChangeForm }: Props) => {
     <form className="mt-[40px]" onSubmit={handleSubmit(onSubmit)}>
       {!!loginError && <Alert type="error">{loginError?.message || ""}</Alert>}
       <div
-        className={
-          "sm:flex items-center h-[38px] md:w-[348px] w-[300px] hidden relative"
-        }
+        className={"flex items-center h-[38px] md:w-[348px] w-[100%] relative"}
       >
         <Icon name="user" className="absolute left-[8px]" />
         <input
@@ -72,7 +70,7 @@ const LoginForm = ({ onChangeForm }: Props) => {
 
       <div
         className={
-          "sm:flex items-center h-[38px] md:w-[348px] w-[300px] hidden relative  mt-[10px]"
+          "flex items-center h-[38px] md:w-[348px] w-[100%] relative  mt-[10px]"
         }
       >
         <Icon name="lock" className="absolute left-[8px]" />
