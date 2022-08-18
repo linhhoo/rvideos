@@ -1,13 +1,18 @@
 import { useEffect, useState, useCallback } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import { authState } from "@/states/authState";
+import { videosState } from "@/states/videosState";
 import { supabase } from "@/utils/supabaseClient";
 import { youtubeParser, getNameByEmail } from "@/utils/helpers";
-import { YoutubeVideoSnippetModel } from "@/models/videoModel";
+import {
+  YoutubeVideoSnippetModel,
+  ShareVideoInputModel,
+} from "@/models/videoModel";
 import { youtubeInfoAPI } from "@/api/youtubeAPI";
 
 export const useShareVideo = () => {
   const user = useRecoilValue(authState);
+  const [videos, setVideos] = useRecoilState(videosState);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -20,26 +25,28 @@ export const useShareVideo = () => {
 
   const onInsertVideoInfo = useCallback(
     async (url: string, snippet: YoutubeVideoSnippetModel) => {
-      const _input = {
+      const _input: ShareVideoInputModel = {
         url: url,
         title: snippet.title,
         description: snippet.description,
         thumb: snippet.thumbnails.standard.url,
+        blur_thumb: snippet.thumbnails.default.url,
         user_id: user?.id,
         user_name: user?.email ? getNameByEmail(user?.email) : "No name",
       };
       const { data, error } = await supabase.from("videos").insert([_input]);
       if (data && data.length) {
+        const _video = await data.concat(videos);
+        setVideos(_video);
         setIsSuccess(true);
       }
       if (error) {
         setIsError(true);
         setErrorMessage(error.message);
       }
-      console.log("data===>", data, error);
       setIsLoading(false);
     },
-    [user?.email, user?.id]
+    [setVideos, videos, user?.email, user?.id]
   );
 
   const onShareVideo = useCallback(
