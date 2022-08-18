@@ -2,11 +2,8 @@ import { useEffect, useState, useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { videosState } from "@/states/videosState";
 import { supabase } from "@/utils/supabaseClient";
-import { youtubeParser, getNameByEmail } from "@/utils/helpers";
-import { YoutubeVideoSnippetModel } from "@/models/videoModel";
-import { youtubeInfoAPI } from "@/api/youtubeAPI";
 
-const PER_PAGE = 5;
+const PER_PAGE = 10;
 
 export const useVideos = () => {
   const [videos, setVideos] = useRecoilState(videosState);

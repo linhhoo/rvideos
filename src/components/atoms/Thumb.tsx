@@ -1,14 +1,12 @@
 import React, { useMemo } from "react";
 import { classNames } from "@/utils/helpers";
 import Image from "next/image";
-import Link from "next/link";
 
 interface Props {
   src: string;
   alt?: string;
   onClick?: () => void;
   className?: string;
-  href?: string;
   blurImage?: string;
 }
 
@@ -17,7 +15,6 @@ const Thumb = ({
   className,
   alt,
   onClick,
-  href,
   blurImage,
   ...other
 }: Props) => {

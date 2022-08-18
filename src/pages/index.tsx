@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   return (
     <React.Fragment>
       <Head>
-        <title>Rvideos</title>
+        <title>Rvideos | Linh Ho</title>
         <meta name="description" content="Rvideos - Share video from Youtube" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

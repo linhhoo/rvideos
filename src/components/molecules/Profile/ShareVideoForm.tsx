@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import Icon from "@/components/atoms/Icon";
 import Button from "@/components/atoms/Button";
 import Text from "@/components/atoms/Text";

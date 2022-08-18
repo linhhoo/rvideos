@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
 import Thumb from "@/components/atoms/Thumb";
 import Title from "@/components/atoms/Title";
 import Text from "@/components/atoms/Text";
@@ -15,6 +15,7 @@ const ListVideoItem: React.FC<Props> = ({ data, onClick }) => {
       <Thumb
         src={data.thumb}
         blurImage={data.blur_thumb}
+        alt={data.title}
         className="w-[100%] md:w-[40vw]  md:max-w-[400px]"
         onClick={() => onClick(data)}
       />

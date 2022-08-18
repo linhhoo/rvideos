@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { authState } from "@/states/authState";
 import { videosState } from "@/states/videosState";

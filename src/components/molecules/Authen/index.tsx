@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-import Icon from "@/components/atoms/Icon";
 import Button from "@/components/atoms/Button";
 import Modal from "@/components/atoms/Modal";
 import Title from "@/components/atoms/Title";
